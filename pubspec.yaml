@@ -46,6 +46,7 @@ dependencies:
   geolocator: ^13.0.1
   just_audio: ^0.9.40
   provider: ^6.1.2
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:

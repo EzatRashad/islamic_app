@@ -1,8 +1,8 @@
 import 'package:api_islamic/modules/azkar/second_azkar/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../app_config_provider/app_config_provider.dart';
@@ -40,7 +40,7 @@ class _Azkar_homeState extends State<Azkar_home> {
                 return MyScaffold(
                   title: AppLocalizations.of(context)!.azkar,
                   body: Container(
-                    decoration:   BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(provider.appTheme == ThemeMode.dark
                             ? "assets/images/bdark-web.png"
@@ -64,37 +64,44 @@ class _Azkar_homeState extends State<Azkar_home> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: Column(
                               children: [
-                                ListTile(
-                                  title: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0),
-                                    child: Text(
-                                      snapshot.data![index].category!,
-                                      textAlign: TextAlign.end,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium!,
-                                    ),
-                                  ),
-                                  trailing: Image(
-                                    image: const AssetImage(
-                                        'assets/images/sta.png'),
-                                    height: 30.h,
-                                    width: 30.w,
-                                    fit: BoxFit.contain,
-                                  ),
+                                InkWell(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => Zkr(
                                             azkar:
-                                                (snapshot.data?[index].array) ??
-                                                    [],
+                                            (snapshot.data?[index].array) ??
+                                                [],
                                             title:
-                                                snapshot.data![index].category!,
+                                            snapshot.data![index].category!,
                                           ),
                                         ));
                                   },
+                                  child: Row(
+                                    children: [
+                                      Image(
+                                        image: const AssetImage('assets/images/sta.png'),
+                                        height: 30.h,
+                                        width: 30.w,
+                                        fit: BoxFit.contain,
+                                      ),
+                                      const SizedBox(width: 8), // Optional: Add some space between the image and text
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 0.0),
+                                          child: Text(
+                                            snapshot.data![index].category!,
+                                            textAlign: TextAlign.start,
+                                            style: Theme.of(context).textTheme.titleSmall!,
+                                            maxLines: 3, // Set the maximum number of lines
+                                            overflow: TextOverflow.ellipsis, // Show ellipsis if the text exceeds maxLines
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
                                 ),
                                 const Divider(),
                               ],

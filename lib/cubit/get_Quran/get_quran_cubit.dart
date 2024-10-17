@@ -36,13 +36,13 @@ class GetQuranCubit extends Cubit<GetQuranState> {
   SurahModel? surahModel;
 
   // Fetch Surah data
-  getSurahData({required String translationKey, required int chapterId}) async {
+  getSurahData({required String translationKey, required int chapterId , var lang}) async {
     emit(VersesLoadingStates());
 
     try {
       var value = await SurahDioHelper.getData(
         translationKey: translationKey,
-        suraNumber: chapterId,
+        suraNumber: chapterId, language: lang.toString(),
       );
       surahModel = SurahModel.fromJson(value.data);
 

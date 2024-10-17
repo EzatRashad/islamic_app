@@ -66,7 +66,9 @@ class VerseWidget extends StatelessWidget {
               ],
             ),
             Text(
+
               "${cubit.surahModel?.result![index].arabicText} ",
+              textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontFamily: "qalam",
                     fontSize: 27.sp,

@@ -38,7 +38,7 @@ class _ChapterVersesState extends State<ChapterVerses> {
 
     return BlocProvider(
       create: (context) => GetQuranCubit()
-        ..getSurahData(translationKey: 'arabic_moyassar', chapterId: widget.id),
+        ..getSurahData(translationKey: provider.applang == 'ar'? 'arabic_moyassar':'english_saheeh', chapterId: widget.id, lang:  provider.applang == 'ar'? 'ar':'en'),
       child: BlocBuilder<GetQuranCubit, GetQuranState>(
         builder: (context, state) {
           var cubit = GetQuranCubit.get(context);

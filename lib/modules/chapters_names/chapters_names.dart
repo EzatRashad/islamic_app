@@ -41,11 +41,12 @@ class _ChaptersNamesState extends State<ChaptersNames> {
                 : state is QuranGetErrorDataStates
                     ? const ErrorW()
                     : Container(
-                        decoration:   BoxDecoration(
+                        decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(provider.appTheme == ThemeMode.dark
-                                ? "assets/images/bdark-web.png"
-                                : "assets/images/blight-web.png"),
+                            image: AssetImage(
+                                provider.appTheme == ThemeMode.dark
+                                    ? "assets/images/bdark-web.png"
+                                    : "assets/images/blight-web.png"),
                             fit: BoxFit.cover,
                           ),
                         ),

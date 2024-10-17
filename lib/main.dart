@@ -9,6 +9,7 @@ import 'app_config_provider/app_config_provider.dart';
 import 'core/themes/theme.dart';
 import 'cubit/blockObserver.dart';
 import 'data/adhan_time_api.dart';
+import 'data/cashe_helper.dart';
 import 'data/quran_api.dart';
 import 'data/surah_api.dart';
 
@@ -16,8 +17,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   AdhanDioHelper.init();
-  DioHelper.init();
-  SurahDioHelper.init();
+   DioHelper.init();
+  await CasheHelper.init();
+   SurahDioHelper.init();
   runApp(ChangeNotifierProvider(
       create: (BuildContext context) => AppConfigProvider(),
       child: const MyApp()));
