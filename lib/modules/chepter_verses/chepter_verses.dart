@@ -44,16 +44,6 @@ class _ChapterVersesState extends State<ChapterVerses> {
           var cubit = GetQuranCubit.get(context);
 
           return MyScaffold(
-            action: IconButton(
-              onPressed: () {
-                cubit.playSurahAudio(cubit.audioUrls);
-              },
-              icon: const Icon(
-                Icons.play_arrow_rounded,
-                color: AppColors.white,
-                size: 30,
-              ),
-            ),
             title: widget.title,
             body: state is VersesLoadingStates
                 ? const Loading()

@@ -21,5 +21,24 @@
 "dark": "Dark",
 "language": "Language",
 "arabic": "Arabic",
-"english": "English"
+"english": "English",
+"learn": "Learning",
+"levelTitle": "Levels of learning",
+"levelOne": "Level one",
+"levelTwo": "Level two",
+"levelThree": "Level three",
+"levelFour": "Level four",
+"fiqh": "Jurisprudence",
+"tafsir": "Tafsir",
+"hadith": "Hadith",
+"seerah": "Biography of the Prophet",
+"tawhid": "Monotheism",
+"aqidah": "Creed"و
+"shop": "Shop",
+"search": "Search",
+"le": "LE",
+"check": "Check out",
+"cart": "Cart"
+
+
 }

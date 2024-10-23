@@ -2,7 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+extension NavigatorExtension on BuildContext {
+  void navigate(Widget page) {
+    Navigator.push(this, MaterialPageRoute(builder: (context) => page));
+  }
 
+  void navigateRemove(Widget page) {
+    Navigator.pushAndRemoveUntil(
+      this,
+      MaterialPageRoute(builder: (context) => page),
+          (route) => false,
+    );
+  }
+}
 
 extension ToFarsiNumber on String {
   String toFarsi() {

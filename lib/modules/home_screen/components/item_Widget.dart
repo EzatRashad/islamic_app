@@ -1,6 +1,7 @@
-import 'package:api_islamic/modules/home_screen/components/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'item_model.dart';
 
 class Item extends StatelessWidget {
   const Item({

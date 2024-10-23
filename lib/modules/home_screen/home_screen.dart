@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
             children: [
               const HomeBanner(),
               25.ph,
-                 Items(),
+              Items(),
               10.ph,
               Aya(),
             ],

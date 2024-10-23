@@ -36,13 +36,17 @@ class GetQuranCubit extends Cubit<GetQuranState> {
   SurahModel? surahModel;
 
   // Fetch Surah data
-  getSurahData({required String translationKey, required int chapterId , var lang}) async {
+  getSurahData(
+      {required String translationKey,
+      required int chapterId,
+      var lang}) async {
     emit(VersesLoadingStates());
 
     try {
       var value = await SurahDioHelper.getData(
         translationKey: translationKey,
-        suraNumber: chapterId, language: lang.toString(),
+        suraNumber: chapterId,
+        language: lang.toString(),
       );
       surahModel = SurahModel.fromJson(value.data);
 
@@ -65,13 +69,14 @@ class GetQuranCubit extends Cubit<GetQuranState> {
 
   SoundModel? soundModel;
   List<String> audioUrls = [];
+  int? playIndex;
 
   // Fetch Quran audio data
   fetchQuranData(String id) async {
     try {
       audioUrls = [];
       var response =
-          await Dio().get('http://api.alquran.cloud/v1/surah/$id/ar.alafasy');
+      await Dio().get('http://api.alquran.cloud/v1/surah/$id/ar.alafasy');
       soundModel = SoundModel.fromJson(response.data);
 
       // Collect all audio URLs from the fetched data
@@ -89,45 +94,41 @@ class GetQuranCubit extends Cubit<GetQuranState> {
     }
   }
 
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
 
-  Future<void> playOneAudio(String url) async {
-    if (isPlaying) {
-      await _audioPlayer.stop();
+  // Method to play a single audio
+  Future<void> playOneAudio(String url, int index) async {
+    if (isPlaying && playIndex == index) {
+      // If the same audio is playing, stop it
+      await audioPlayer.stop();
       isPlaying = false;
+      playIndex = null;
+      emit(ChangeIconStates());
+      return;
     }
 
     try {
-      await _audioPlayer.setUrl(url);
-      await _audioPlayer.play();
+      await audioPlayer.setUrl(url);
+      await audioPlayer.play();
       isPlaying = true;
+      playIndex = index; // Set the current playing index
+
+      // Listen for the completion of the audio
+      audioPlayer.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          // When audio finishes, reset the state
+          isPlaying = false;
+          playIndex = null;
+          emit(ChangeIconStates()); // Update the icon to play_arrow
+        }
+      });
+
       emit(ChangeIconStates()); // Update UI to reflect play state
     } catch (e) {
       print("Error playing audio: $e");
     }
   }
 
-  bool isSurahPlaying = false;
 
-
-  Future<void> playSurahAudio(List<String> urls) async {
-    if (isSurahPlaying) {
-      await _audioPlayer.stop();
-      isSurahPlaying = false;
-    }
-
-    try {
-
-      emit(ChangeIconStates());
-    } catch (e) {
-      print("Error playing audio: $e");
-      isSurahPlaying = false;
-    }
-  }
-
-
-  }
-
-
-
+}

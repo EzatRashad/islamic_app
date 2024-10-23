@@ -1,4 +1,4 @@
- import 'package:api_islamic/modules/qiblah/qiblah.dart';
+import 'package:api_islamic/modules/qiblah_screen/qiblah.dart';
 import 'package:flutter/material.dart';
 
 class Qiblah extends StatelessWidget {

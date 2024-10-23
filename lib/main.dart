@@ -1,5 +1,4 @@
 import 'package:api_islamic/cubit/get_azkar/cubit.dart';
-import 'package:api_islamic/modules/splash_sccreen/splash_sccreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +11,7 @@ import 'data/adhan_time_api.dart';
 import 'data/cashe_helper.dart';
 import 'data/quran_api.dart';
 import 'data/surah_api.dart';
+import 'modules/splash_screen/splash_sccreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

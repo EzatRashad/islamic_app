@@ -40,6 +40,13 @@ class NavBarWidget extends StatelessWidget {
               ),
               label: AppLocalizations.of(context)!.home,
             ),
+             BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+                size: 30,
+              ),
+              label: AppLocalizations.of(context)!.shop,
+            ),
             BottomNavigationBarItem(
               icon: const Icon(
                 Icons.settings,

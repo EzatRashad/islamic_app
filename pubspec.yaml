@@ -47,6 +47,9 @@ dependencies:
   just_audio: ^0.9.40
   provider: ^6.1.2
   shared_preferences: ^2.3.2
+  smooth_page_indicator:
+  shimmer:
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:

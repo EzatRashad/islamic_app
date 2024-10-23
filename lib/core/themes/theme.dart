@@ -8,7 +8,7 @@ class MyTheme {
     primaryColor: AppColors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.primaryLight,
-      elevation: 0,
+       elevation: 0,
       centerTitle: true,
       titleTextStyle: TextStyle(
         color: Colors.white,
@@ -17,7 +17,7 @@ class MyTheme {
         fontFamily: "Cairo-Regular",
       ),
       iconTheme: IconThemeData(
-        color: AppColors.black,
+        color: AppColors.white,
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

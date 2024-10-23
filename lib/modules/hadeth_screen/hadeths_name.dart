@@ -19,7 +19,9 @@ class HadethScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: const AssetImage("assets/images/blight-web.png"),
+            image:   AssetImage( provider.appTheme == ThemeMode.dark
+                ? "assets/images/bdark-web.png"
+                : "assets/images/blight-web.png"),
             fit: BoxFit.cover,
           ),
         ),
